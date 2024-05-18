@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MyStoryApp</string>
+    <string name="txthintusername">Username</string>
+    <string name="txthintpassword">Password</string>
+    <string name="txthintemail">Email</string>
+    <string name="tv_createacc">Create your account</string>
+    <string name="btnSignUp">Sign Up</string>
+    <string name="tvSignUpCaption">Let\'s Start Our Journey!</string>
+    <string name="btnLogin">Log In</string>
+    <string name="tvLoginCaption">Ready to surf our world?</string>
+    <string name="tvLogin">Welcome Back!</string>
+    <string name="tvHeadlinePreview">Explore Inspiring Success Stories: Dive into Dicoding Graduates\' Journey!</string>
+    <string name="tv_pv_logincheck">Already have an account?</string>
+    <string name="tv_pv_tologin">Sign in</string>
+    <string name="tv_rvTitle">title</string>
+    <string name="tv_rvDesc">description</string>
+    <string name="tv_description_detail">No Information Provided</string>
+    <string name="tv_title_detail">No Information Provided</string>
+    <string name="btn_opengallery">Gallery</string>
+    <string name="btn_opencamera">Camera</string>
+    <string name="btn_uploadStory">Add Story</string>
+    <string name="errorPassword">Your password must be at least 8 characters long</string>
+</resources>
