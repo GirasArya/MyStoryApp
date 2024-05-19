@@ -9,6 +9,7 @@ import com.dicoding.mystoryapp.di.Injection
 import com.dicoding.mystoryapp.ui.addstory.AddStoryViewModel
 import com.dicoding.mystoryapp.ui.main.MainViewModel
 import com.dicoding.mystoryapp.ui.login.LoginViewModel
+import com.dicoding.mystoryapp.ui.map.MapViewModel
 import com.dicoding.mystoryapp.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(private val context: Context) :
@@ -43,6 +44,9 @@ class ViewModelFactory private constructor(private val context: Context) :
         }
         else if(modelClass.isAssignableFrom(AddStoryViewModel::class.java)){
             return AddStoryViewModel(Injection.provideRepository(context)) as T
+        }
+        else if(modelClass.isAssignableFrom(MapViewModel::class.java)){
+            return MapViewModel(Injection.provideRepository(context)) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

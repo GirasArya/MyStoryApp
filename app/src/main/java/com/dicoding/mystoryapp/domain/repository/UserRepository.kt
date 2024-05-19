@@ -37,6 +37,11 @@ class UserRepository constructor(
         return apiService.getStories(token)
     }
 
+    suspend fun getStoriesWithLocation(token: String) : StoryResponse{
+        return apiService.getStoriesWithLocation(token)
+    }
+
+
     fun getSession(): LiveData<User> {
         return pref.getToken().asLiveData()
     }

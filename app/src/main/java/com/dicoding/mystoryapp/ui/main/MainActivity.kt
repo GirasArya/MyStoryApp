@@ -3,6 +3,8 @@ package com.dicoding.mystoryapp.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +13,7 @@ import com.dicoding.mystoryapp.R
 import com.dicoding.mystoryapp.databinding.ActivityMainBinding
 import com.dicoding.mystoryapp.factory.ViewModelFactory
 import com.dicoding.mystoryapp.ui.addstory.AddStoryActivity
+import com.dicoding.mystoryapp.ui.map.MapActivity
 import com.dicoding.mystoryapp.ui.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -88,4 +91,18 @@ class MainActivity : AppCompatActivity() {
         return ViewModelProvider(activity, factory).get(MainViewModel::class.java)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.item_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.mapActivity ->{
+                startActivity(Intent(this, MapActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
