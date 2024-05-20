@@ -44,7 +44,7 @@ class UserRepository constructor(
                 pageSize = 5
             ),
             pagingSourceFactory = {
-                PagingSource(apiService, pref)
+                PagingSource<Any, Any?>(apiService, pref)
             }
         ).liveData
     }

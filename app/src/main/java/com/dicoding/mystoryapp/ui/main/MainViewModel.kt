@@ -1,16 +1,14 @@
 package com.dicoding.mystoryapp.ui.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.dicoding.mystoryapp.data.remote.response.ListStoryItem
 import com.dicoding.mystoryapp.domain.model.User
 import com.dicoding.mystoryapp.domain.repository.UserRepository
-import com.dicoding.mystoryapp.data.remote.response.ListStoryItem
-import com.dicoding.mystoryapp.data.remote.response.StoryResponse
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: UserRepository) : ViewModel() {
@@ -20,8 +18,6 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
 
     val getListStories: LiveData<PagingData<ListStoryItem>> =
         repository.getStories().cachedIn(viewModelScope)
-
-
 
 
     fun clearSession() {

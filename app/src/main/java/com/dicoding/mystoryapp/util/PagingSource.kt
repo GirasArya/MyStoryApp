@@ -8,7 +8,7 @@ import com.dicoding.mystoryapp.data.remote.response.ListStoryItem
 import com.dicoding.mystoryapp.domain.model.User
 import kotlinx.coroutines.flow.first
 
-class PagingSource(
+open class PagingSource<T, U>(
     private val apiService: ApiService,
     private val pref: UserPreference
 ) : PagingSource<Int, ListStoryItem>() {
