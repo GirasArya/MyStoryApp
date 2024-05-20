@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     token = it.token
                     Log.d("MainActivity", "Token: $token")
                     binding.progressBarLogin.visibility = View.GONE
-                    mainViewModel.getListStories(token)
+                    mainViewModel.getListStories
                 } else {
                     val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
                     startActivity(intent)
@@ -52,9 +52,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
         // Observe the list of stories
-        mainViewModel.listStory.observe(this@MainActivity) { stories ->
+        mainViewModel.getListStories.observe(this@MainActivity) { stories ->
             stories?.let {
-                adapter.submitList(stories)
+                adapter.submitData(lifecycle, it)
             }
         }
 
@@ -66,8 +66,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.fabLogout.setOnClickListener{
-            mainViewModel.clearSession()
+        binding.fabMapStories.setOnClickListener{
+            startActivity(Intent(this, MapActivity::class.java))
         }
     }
 
@@ -98,8 +98,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.mapActivity ->{
-                startActivity(Intent(this, MapActivity::class.java))
+            R.id.nav_logout ->{
+                mainViewModel.clearSession()
                 true
             }
             else -> super.onOptionsItemSelected(item)

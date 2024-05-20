@@ -70,4 +70,6 @@ dependencies {
     ksp("androidx.room:room-compiler:2.6.1")
 
     implementation("androidx.activity:activity:1.9.0")
+
+    implementation("androidx.paging:paging-runtime-ktx:3.1.0")
 }

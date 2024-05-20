@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,7 @@ import com.dicoding.mystoryapp.R
 import com.dicoding.mystoryapp.data.remote.response.ListStoryItem
 import com.dicoding.mystoryapp.ui.detail.DetailActivity
 
-class MainListAdapter : ListAdapter<ListStoryItem, MainListAdapter.ViewHolder>(DiffCallback) {
+class MainListAdapter : PagingDataAdapter<ListStoryItem, MainListAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(storyItem: ListStoryItem?) {

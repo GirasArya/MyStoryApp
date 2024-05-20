@@ -4,13 +4,18 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import androidx.paging.Pager
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.dicoding.mystoryapp.data.local.datastore.UserPreference
-import com.dicoding.mystoryapp.domain.model.User
-import com.dicoding.mystoryapp.data.remote.response.AddStoryResponse
 import com.dicoding.mystoryapp.data.remote.api.ApiService
+import com.dicoding.mystoryapp.data.remote.response.AddStoryResponse
+import com.dicoding.mystoryapp.data.remote.response.ListStoryItem
 import com.dicoding.mystoryapp.data.remote.response.LoginResponse
 import com.dicoding.mystoryapp.data.remote.response.RegisterResponse
 import com.dicoding.mystoryapp.data.remote.response.StoryResponse
+import com.dicoding.mystoryapp.domain.model.User
+import com.dicoding.mystoryapp.util.PagingSource
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -33,11 +38,18 @@ class UserRepository constructor(
         return apiService.login(email, password)
     }
 
-    suspend fun getStories(token: String): StoryResponse {
-        return apiService.getStories(token)
+    fun getStories(): LiveData<PagingData<ListStoryItem>> {
+        return Pager(
+            config = androidx.paging.PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                PagingSource(apiService, pref)
+            }
+        ).liveData
     }
 
-    suspend fun getStoriesWithLocation(token: String) : StoryResponse{
+    suspend fun getStoriesWithLocation(token: String): StoryResponse {
         return apiService.getStoriesWithLocation(token)
     }
 

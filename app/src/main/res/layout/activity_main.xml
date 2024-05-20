@@ -34,13 +34,12 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabLogout"
+        android:id="@+id/fab_mapStories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        app:backgroundTint="#FF6565"
-        android:src="@drawable/ic_logout_24"
+        android:src="@drawable/ic_map"
         app:layout_constraintBottom_toBottomOf="@+id/rv_story"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

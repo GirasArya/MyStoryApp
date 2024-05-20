@@ -6,6 +6,7 @@ import com.dicoding.mystoryapp.data.remote.response.RegisterResponse
 import com.dicoding.mystoryapp.data.remote.response.StoryResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -31,10 +32,17 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
+//    @GET("stories")
+//    suspend fun getStories(
+//        @Header("Authorization") token: String,
+//    ): StoryResponse
+
     @GET("stories")
     suspend fun getStories(
         @Header("Authorization") token: String,
-    ): StoryResponse
+        @Query("page") page: Int = 1,
+        @Query("size") size: Int = 20
+    ): Response<StoryResponse>
 
     @GET("stories")
     suspend fun getStoriesWithLocation(
