@@ -15,10 +15,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.mystoryapp.databinding.ActivityAddStoryBinding
 import com.dicoding.mystoryapp.factory.ViewModelFactory
+import com.dicoding.mystoryapp.ui.main.MainActivity
 import com.dicoding.mystoryapp.util.getImageUri
 import com.dicoding.mystoryapp.util.reduceFileImage
 import com.dicoding.mystoryapp.util.uriToFile
-import com.dicoding.mystoryapp.ui.main.MainActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -99,23 +99,29 @@ class AddStoryActivity : AppCompatActivity() {
                     )
                     addStoryViewModel.addStoryResponse.observe(this@AddStoryActivity) { response ->
                         if (response.error == false) {
-                            Toast.makeText(this, "Successfully add story", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Successfully add story", Toast.LENGTH_SHORT)
+                                .show()
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
                             finish()
+                        } else {
+                            Toast.makeText(this, "Error when add story", Toast.LENGTH_SHORT).show()
                         }
                     }
                     binding.progressBarLogin.visibility = View.GONE
-                } else{
-                    Toast.makeText(this, "Successfully add story", Toast.LENGTH_SHORT).show()
+                } else {
                     binding.progressBarLogin.visibility = View.GONE
+                    Toast.makeText(this, "Error user is not logged in", Toast.LENGTH_LONG).show()
                 }
             } ?: run {
                 Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show()
                 binding.progressBarLogin.visibility = View.GONE
             }
         }
-        val intent = Intent(this, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
+
+
     }
 
 

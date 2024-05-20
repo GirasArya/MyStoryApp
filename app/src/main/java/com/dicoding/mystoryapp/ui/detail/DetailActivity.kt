@@ -21,8 +21,8 @@ class DetailActivity : AppCompatActivity() {
         val storiesData= intent.getParcelableExtra<ListStoryItem>("storyItem") as ListStoryItem
         Glide.with(applicationContext)
             .load(storiesData.photoUrl)
-            .into(findViewById(R.id.img_story_detail))
-        findViewById<TextView>(R.id.tv_title_detail).text = storiesData.name
-        findViewById<TextView>(R.id.tv_description_detail).text = storiesData.description
+            .into(findViewById(R.id.img_story))
+        findViewById<TextView>(R.id.tv_title).text = storiesData.name
+        findViewById<TextView>(R.id.tv_description).text = storiesData.description
     }
 }
